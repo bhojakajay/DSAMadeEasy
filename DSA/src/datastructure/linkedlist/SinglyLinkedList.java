@@ -140,6 +140,27 @@ public class SinglyLinkedList<T> {
 		return headNode;
 	}
 	
+	public void removeMatched(T item) {
+		SinglyListNode<T> current = headNode;
+		SinglyListNode<T> previous = null;
+		while(current!=null) {
+			if(current.getData().equals(item)) {
+				if(previous!=null) {
+					previous.setNext(current.getNext());
+					current.setNext(null);
+					return;
+				}else {
+					current = current.getNext();
+					headNode = current;
+				}
+				
+			}else {
+				previous = current;
+				current = current.getNext();
+			}
+		}
+	}
+	
 	public SinglyListNode<T> search(T item){
 		SinglyListNode<T> current = headNode;
 		while(current!=null) {
@@ -224,7 +245,13 @@ public class SinglyLinkedList<T> {
 		System.out.println(linkedList.index(404));
 		System.out.println(linkedList.index(11111));
 		System.out.println(linkedList.index(6));
-		linkedList.clear();
+		linkedList.removeMatched(404);
+		System.out.println(linkedList);
+		linkedList.removeMatched(1287);
+		System.out.println(linkedList);
+		linkedList.removeMatched(505);
+		System.out.println(linkedList);
+		linkedList.removeMatched(606);
 		System.out.println(linkedList);
 		/*
 		 * linkedList.insert(new SinglyListNode<Integer>(707, null),
