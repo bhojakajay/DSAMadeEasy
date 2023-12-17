@@ -1,4 +1,4 @@
-package datastructure.linkedlist.singly;
+package datastructure.linkedlist;
 /**
  * 
  * @param <T>
@@ -139,6 +139,40 @@ public class SinglyLinkedList<T> {
 		size--;
 		return headNode;
 	}
+	
+	public SinglyListNode<T> search(T item){
+		SinglyListNode<T> current = headNode;
+		while(current!=null) {
+			if(current.getData().equals(item)) {
+				return current;
+			}else {
+				current = current.getNext();
+			}
+		}
+		return null;
+	}
+	
+	public int index(T item) {
+		SinglyListNode<T> current = headNode;
+		int index = -1;
+		while(current!=null) {
+			index++;
+			if(current.getData().equals(item)) {
+				return index;
+			}else {
+				current = current.getNext();
+				if(current==null) {
+					index = -1;
+				}
+			}
+		}
+		return index;
+	}
+	
+	public void clear() {
+		headNode = null;
+		size = 0;
+	}
 	public static void main(String[] args) {
 		integerDataTester();
 		stringDataTester();
@@ -183,6 +217,14 @@ public class SinglyLinkedList<T> {
 		linkedList.insert(new SinglyListNode<Integer>(505, null), 0);
 		System.out.println(linkedList);
 		linkedList.insert(new SinglyListNode<Integer>(606, null), linkedList.size());
+		System.out.println(linkedList);
+		System.out.println(linkedList.search(404));
+		System.out.println(linkedList.search(11111));
+		System.out.println(linkedList.search(6));
+		System.out.println(linkedList.index(404));
+		System.out.println(linkedList.index(11111));
+		System.out.println(linkedList.index(6));
+		linkedList.clear();
 		System.out.println(linkedList);
 		/*
 		 * linkedList.insert(new SinglyListNode<Integer>(707, null),

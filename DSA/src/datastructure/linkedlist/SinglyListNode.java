@@ -1,4 +1,4 @@
-package datastructure.linkedlist.singly;
+package datastructure.linkedlist;
 
 public class SinglyListNode<T> {
 	private T data;
@@ -20,5 +20,10 @@ public class SinglyListNode<T> {
 	}
 	public void setNext(SinglyListNode<T> singlyListNode) {
 		this.next = singlyListNode;
+	}
+	
+	@Override
+	public String toString() {
+		return this.getData().toString();
 	}
 }
