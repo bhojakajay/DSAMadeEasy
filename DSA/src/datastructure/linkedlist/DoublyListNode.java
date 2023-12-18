@@ -4,6 +4,10 @@ public class DoublyListNode<T> {
 	private T data;
 	private DoublyListNode<T> next;
 	private DoublyListNode<T> previous;
+	
+	public <K extends T> DoublyListNode(T item){
+		this.data = item;
+	}
 	public T getData() {
 		return data;
 	}
